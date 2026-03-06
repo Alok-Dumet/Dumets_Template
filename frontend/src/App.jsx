@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import index from "./pages/home";
+import Home from "./pages/home";
 
 function App() {
 
@@ -19,8 +19,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={index}/>
-            <Route path="*" element={index}/> {/*create an */}
+            <Route path="/" element={<Home />}/>
+            <Route path="*" element={<Home />}/> {/*create an */}
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
