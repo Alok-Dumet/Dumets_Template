@@ -80,6 +80,10 @@ app.use(compression());
 //allows me to read req.body as json
 app.use(express.json({ limit: '10mb' }));
 
+// -------------------------------------------------------------------------------- Proxy Support -----------------------------------------------------------------------------
+//In case a proxy is used, tells the app to look at the X-forward header
+app.set('trust proxy', 1);
+
 // -------------------------------------------------------------------------------- Session and Passport Session -----------------------------------------------------------------------------
 //use an array of long randomly generate strings as the session key. Change these every so often to keep the session secure.
 // app.use(
@@ -87,7 +91,8 @@ app.use(express.json({ limit: '10mb' }));
 //     secret: process.env.sessionKey ?? 'LocalSecret',
 //     resave: false,
 //     saveUninitialized: false,
-//     cookie: { maxAge: 1000 * 60 * 60 * 2, rolling: true }, //logout automatically after an hour of inactivity
+//     rolling: true,
+//     cookie: { maxAge: 1000 * 60 * 60 * 2}, //logout automatically after an hour of inactivity
 //   })
 // );
 
